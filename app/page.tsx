@@ -365,7 +365,11 @@ export default function Home() {
               </div>
               
               <div className="mb-6 text-center">
-                <div className="mb-3 text-4xl">�</div>
+                <div className="mb-3 flex justify-center">
+                  <svg className="h-12 w-12 text-[#FF9500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  </svg>
+                </div>
                 <h3 className="mb-2 text-xl font-bold text-white">
                   The Remote Starter Pack
                 </h3>
@@ -373,8 +377,9 @@ export default function Home() {
                   Duration: 30 Days
                 </p>
                 <div className="mb-1">
-                  <span className="text-lg text-gray-500 line-through">₦15,000</span>
-                  <span className="ml-2 text-4xl font-bold text-[#FF9500]">₦7,500</span>
+                  {/* <span className="text-lg text-gray-500 line-through">₦15,000</span>
+                  <span className="ml-2 text-4xl font-bold text-[#FF9500]">₦7,500</span> */}
+                  <span className="text-4xl font-bold text-[#FF9500]">₦15,000</span>
                 </div>
                 <p className="text-xs text-gray-500">Get Started Today</p>
               </div>
@@ -400,7 +405,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <a href="https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N7,500%20Starter%20Pack%20for%20MELLOREMOTE%20VIP">
+              <a href="https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N15,000%20Starter%20Pack%20for%20MELLOREMOTE%20VIP">
                 <button className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black">
                   Get Started
                 </button>
@@ -420,7 +425,11 @@ export default function Home() {
               </div>
               
               <div className="mb-6 text-center">
-                <div className="mb-3 text-4xl">🚀</div>
+                <div className="mb-3 flex justify-center">
+                  <svg className="h-12 w-12 text-[#FF9500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
                 <h3 className="mb-2 text-xl font-bold text-white">
                   The Remote Job Hacker
                 </h3>
@@ -428,8 +437,9 @@ export default function Home() {
                   Duration: 2 Months
                 </p>
                 <div className="mb-1">
-                  <span className="text-lg text-gray-500 line-through">₦50,000</span>
-                  <span className="ml-2 text-4xl font-bold text-[#FF9500]">₦25,000</span>
+                  {/* <span className="text-lg text-gray-500 line-through">₦50,000</span>
+                  <span className="ml-2 text-4xl font-bold text-[#FF9500]">₦25,000</span> */}
+                  <span className="text-4xl font-bold text-[#FF9500]">₦50,000</span>
                 </div>
                 <p className="text-xs text-gray-500">Most Popular Choice</p>
               </div>
@@ -461,7 +471,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <a href="https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N25,000%20Job%20Hacker%20Package%20for%20MELLOREMOTE%20VIP">
+              <a href="https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N50,000%20Job%20Hacker%20Package%20for%20MELLOREMOTE%20VIP">
                 <button className="mt-auto w-full rounded-lg bg-[#FF9500] py-3 font-semibold text-black transition-all hover:bg-[#FFB340]">
                   Get Started
                 </button>
@@ -481,7 +491,11 @@ export default function Home() {
               </div>
               
               <div className="mb-6 text-center">
-                <div className="mb-3 text-4xl">🏆</div>
+                <div className="mb-3 flex justify-center">
+                  <svg className="h-12 w-12 text-[#FF9500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                </div>
                 <h3 className="mb-2 text-xl font-bold text-white">
                   Remote Goldmine VIP Inner Circle
                 </h3>
@@ -489,8 +503,9 @@ export default function Home() {
                   Duration: 2 Months
                 </p>
                 <div className="mb-1">
-                  <span className="text-lg text-gray-500 line-through">₦100,000</span>
-                  <span className="ml-2 text-4xl font-bold text-[#FF9500]">₦50,000</span>
+                  {/* <span className="text-lg text-gray-500 line-through">₦100,000</span>
+                  <span className="ml-2 text-4xl font-bold text-[#FF9500]">₦50,000</span> */}
+                  <span className="text-4xl font-bold text-[#FF9500]">₦100,000</span>
                 </div>
                 <p className="text-xs text-gray-500">Ultimate VIP Access</p>
               </div>
@@ -522,7 +537,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <a href="https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N50,000%20Goldmine%20VIP%20Package%20for%20MELLOREMOTE%20VIP">
+              <a href="https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N100,000%20Goldmine%20VIP%20Package%20for%20MELLOREMOTE%20VIP">
                 <button className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black">
                   Get Started
                 </button>
