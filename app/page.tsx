@@ -181,7 +181,7 @@ export default function Home() {
            
             <div className="flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-3">
               <a
-                href="https://chat.whatsapp.com/DbNbRu8wCqABcCNerDML9n?mode=gi_t"
+                href="https://chat.whatsapp.com/LA0mWFKjWhC2VHIBebAAJZ?mode=hq2tcli"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-[#FF9500] px-4 py-2 text-sm font-semibold text-black transition-all hover:bg-[#FFB340]"
@@ -461,7 +461,7 @@ export default function Home() {
                   <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm text-gray-300">1 Personal Mentor with 25 Days of Live Mentorship</span>
+                  <span className="text-sm text-gray-300">4 Personal Mentors with 25 Days of Live Mentorship</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -527,7 +527,7 @@ export default function Home() {
                   <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm text-gray-300">4-10 Personal Mentors with 40 Days of Live Mentorship</span>
+                  <span className="text-sm text-gray-300">10 Personal Mentors with 40 Days of Live Mentorship</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
