@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [isTestimonialPaused, setIsTestimonialPaused] = useState(false);
+  const [testimonialDelay, setTestimonialDelay] = useState(1500);
   const format2 = (n: number) => n.toString().padStart(2, "0");
   
   const testimonialImages = [
@@ -43,12 +43,17 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (isTestimonialPaused) return;
     const testimonialInterval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonialImages.length);
-    }, 1500);
+      if (testimonialDelay !== 1500) setTestimonialDelay(1500);
+    }, testimonialDelay);
     return () => clearInterval(testimonialInterval);
-  }, [testimonialImages.length, isTestimonialPaused]);
+  }, [testimonialImages.length, testimonialDelay]);
+
+  const handleTestimonialClick = (index: number) => {
+    setCurrentTestimonial(index);
+    setTestimonialDelay(3500);
+  };
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-black">
       {/* Background gradient overlay */}
@@ -597,11 +602,7 @@ export default function Home() {
             className="flex flex-col items-center"
           >
             {/* Mobile: Single card / Desktop: Two cards side by side */}
-            <div 
-              className="grid w-full max-w-5xl grid-cols-1 gap-4 md:grid-cols-2"
-              onMouseEnter={() => setIsTestimonialPaused(true)}
-              onMouseLeave={() => setIsTestimonialPaused(false)}
-            >
+            <div className="grid w-full max-w-5xl grid-cols-1 gap-4 md:grid-cols-2">
               {/* First card (visible on both mobile and desktop) */}
               <div className="overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#FF9500]/5 to-transparent p-1">
                 <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-black">
@@ -649,16 +650,18 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Progress indicators - below the images */}
+            {/* Progress indicators - below the images (clickable) */}
             <div className="mt-4 flex gap-2">
               {testimonialImages.map((_, index) => (
-                <div
+                <button
                   key={index}
-                  className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                  onClick={() => handleTestimonialClick(index)}
+                  className={`h-2 rounded-full transition-all duration-300 hover:bg-[#FF9500]/70 ${
                     index === currentTestimonial
                       ? "w-6 bg-[#FF9500]"
-                      : "bg-white/30"
+                      : "w-2 bg-white/30"
                   }`}
+                  aria-label={`View testimonial ${index + 1}`}
                 />
               ))}
             </div>
