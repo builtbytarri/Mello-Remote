@@ -11,12 +11,12 @@ export default function Home() {
   const format2 = (n: number) => n.toString().padStart(2, "0");
   
   const testimonialImages = [
-    { src: "/Mello Sept 29 Testimonial Favour@2x.png", alt: "Favour Success Story" },
-    { src: "/Mello Sept 29 Testimonial Larry@2x.png", alt: "Larry Success Story" },
-    { src: "/IMG_9499.jpg", alt: "Success Story" },
-    { src: "/IMG_9500.jpg", alt: "Success Story" },
-    { src: "/IMG_5672.JPG", alt: "Success Story" },
-    { src: "/IMG_5691.JPG", alt: "Success Story" },
+    { src: "/success1.png", alt: "Success Story 1" },
+    { src: "/success2.png", alt: "Success Story 2" },
+    { src: "/success3.jpg", alt: "Success Story 3" },
+    { src: "/success4.jpg", alt: "Success Story 4" },
+    { src: "/success5.jpg", alt: "Success Story 5" },
+    { src: "/success6.jpg", alt: "Success Story 6" },
   ];
   const getNextTargetDate = () => {
     const now = new Date();
