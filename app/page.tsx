@@ -602,8 +602,8 @@ export default function Home() {
                   {testimonialImages.map((image, index) => (
                     <div
                       key={image.src}
-                      className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                        index === currentTestimonial ? "opacity-100" : "opacity-0"
+                      className={`absolute inset-0 ${
+                        index === currentTestimonial ? "z-10 opacity-100" : "z-0 opacity-0"
                       }`}
                     >
                       <Image
@@ -624,8 +624,8 @@ export default function Home() {
                   {testimonialImages.map((image, index) => (
                     <div
                       key={image.src}
-                      className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                        index === (currentTestimonial + 1) % testimonialImages.length ? "opacity-100" : "opacity-0"
+                      className={`absolute inset-0 ${
+                        index === (currentTestimonial + 1) % testimonialImages.length ? "z-10 opacity-100" : "z-0 opacity-0"
                       }`}
                     >
                       <Image
