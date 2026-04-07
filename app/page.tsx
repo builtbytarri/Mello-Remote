@@ -6,7 +6,17 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const format2 = (n: number) => n.toString().padStart(2, "0");
+  
+  const testimonialImages = [
+    { src: "/Mello Sept 29 Testimonial Favour@2x.png", alt: "Favour Success Story" },
+    { src: "/Mello Sept 29 Testimonial Larry@2x.png", alt: "Larry Success Story" },
+    { src: "/IMG_9499.jpg", alt: "Success Story" },
+    { src: "/IMG_9500.jpg", alt: "Success Story" },
+    { src: "/IMG_5672.JPG", alt: "Success Story" },
+    { src: "/IMG_5691.JPG", alt: "Success Story" },
+  ];
   const getNextTargetDate = () => {
     const now = new Date();
     const target = new Date(now);
@@ -30,6 +40,13 @@ export default function Home() {
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
   }, []);
+
+  useEffect(() => {
+    const testimonialInterval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonialImages.length);
+    }, 1500);
+    return () => clearInterval(testimonialInterval);
+  }, [testimonialImages.length]);
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-black">
       {/* Background gradient overlay */}
@@ -379,7 +396,7 @@ export default function Home() {
                 <div className="mb-1">
                   {/* <span className="text-lg text-gray-500 line-through">₦15,000</span>
                   <span className="ml-2 text-4xl font-bold text-[#FF9500]">₦7,500</span> */}
-                  <span className="text-4xl font-bold text-[#FF9500]">₦15,000</span>
+                  <span className="text-4xl font-bold text-[#FF9500]">₦25,000</span>
                 </div>
                 <p className="text-xs text-gray-500">Get Started Today</p>
               </div>
@@ -405,7 +422,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <a href="https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N15,000%20Starter%20Pack%20for%20MELLOREMOTE%20VIP">
+              <a href="https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N25,000%20Starter%20Pack%20for%20MELLOREMOTE%20VIP">
                 <button className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black">
                   Get Started
                 </button>
@@ -569,105 +586,45 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Success story cards */}
-          <div className="grid gap-16 md:grid-cols-2 lg:gap-12">
-            {/* Favour's Story */}
+          {/* Single auto-fading testimonial card */}
+          <div className="flex justify-center">
             <motion.div
-              initial={{ opacity: 0, x: -30, y: 20 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
-                duration: 1.2,
-                delay: 0.2,
-                ease: [0.22, 1, 0.36, 1]
-              }}
-              className="group relative overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#FF9500]/5 to-transparent p-1 transition-all hover:border-[#FF9500]/40 hover:shadow-2xl hover:shadow-[#FF9500]/20"
+              transition={{ duration: 0.8 }}
+              className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#FF9500]/5 to-transparent p-1"
             >
-              <div className="relative overflow-hidden rounded-xl bg-black">
-                <Image
-                  src="/Mello Sept 29 Testimonial Favour@2x.png"
-                  alt="Favour Success Story"
-                  width={800}
-                  height={1000}
-                  className="h-auto w-full transition-transform duration-500 group-hover:scale-105"
-                />
-                {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-black md:aspect-[3/4]">
+                {testimonialImages.map((image, index) => (
+                  <div
+                    key={image.src}
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                      index === currentTestimonial ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover object-top"
+                      priority={index === 0}
+                    />
+                  </div>
+                ))}
               </div>
-            </motion.div>
-
-            {/* Larry's Story */}
-            <motion.div
-              initial={{ opacity: 0, x: 30, y: 20 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
-                duration: 1.2,
-                delay: 0.3,
-                ease: [0.22, 1, 0.36, 1]
-              }}
-              className="group relative overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#FF9500]/5 to-transparent p-1 transition-all hover:border-[#FF9500]/40 hover:shadow-2xl hover:shadow-[#FF9500]/20"
-            >
-              <div className="relative overflow-hidden rounded-xl bg-black">
-                <Image
-                  src="/Mello Sept 29 Testimonial Larry@2x.png"
-                  alt="Larry Success Story"
-                  width={800}
-                  height={1000}
-                  className="h-auto w-full transition-transform duration-500 group-hover:scale-105"
-                />
-                {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </div>
-            </motion.div>
-
-            {/* Success Story 9499 */}
-            <motion.div
-              initial={{ opacity: 0, x: -30, y: 20 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
-                duration: 1.2,
-                delay: 0.4,
-                ease: [0.22, 1, 0.36, 1]
-              }}
-              className="group relative overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#FF9500]/5 to-transparent p-1 transition-all hover:border-[#FF9500]/40 hover:shadow-2xl hover:shadow-[#FF9500]/20"
-            >
-              <div className="relative overflow-hidden rounded-xl bg-black">
-                <Image
-                  src="/IMG_9499.jpg"
-                  alt="Success Story"
-                  width={800}
-                  height={1000}
-                  className="h-auto w-full transition-transform duration-500 group-hover:scale-105"
-                />
-                {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </div>
-            </motion.div>
-
-            {/* Success Story 9500 */}
-            <motion.div
-              initial={{ opacity: 0, x: 30, y: 20 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
-                duration: 1.2,
-                delay: 0.5,
-                ease: [0.22, 1, 0.36, 1]
-              }}
-              className="group relative overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#FF9500]/5 to-transparent p-1 transition-all hover:border-[#FF9500]/40 hover:shadow-2xl hover:shadow-[#FF9500]/20"
-            >
-              <div className="relative overflow-hidden rounded-xl bg-black">
-                <Image
-                  src="/IMG_9500.jpg"
-                  alt="Success Story"
-                  width={800}
-                  height={1000}
-                  className="h-auto w-full transition-transform duration-500 group-hover:scale-105"
-                />
-                {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              {/* Progress indicators */}
+              <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+                {testimonialImages.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                      index === currentTestimonial
+                        ? "w-6 bg-[#FF9500]"
+                        : "bg-white/30"
+                    }`}
+                  />
+                ))}
               </div>
             </motion.div>
           </div>
