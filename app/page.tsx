@@ -586,48 +586,74 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Single auto-fading testimonial card */}
-          <div className="flex justify-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#FF9500]/5 to-transparent p-1"
-            >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-black md:aspect-[3/4]">
-                {testimonialImages.map((image, index) => (
-                  <div
-                    key={image.src}
-                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                      index === currentTestimonial ? "opacity-100" : "opacity-0"
-                    }`}
-                  >
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      className="object-cover object-top"
-                      priority={index === 0}
-                    />
-                  </div>
-                ))}
+          {/* Auto-fading testimonial cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col items-center"
+          >
+            {/* Mobile: Single card / Desktop: Two cards side by side */}
+            <div className="grid w-full max-w-5xl grid-cols-1 gap-4 md:grid-cols-2">
+              {/* First card (visible on both mobile and desktop) */}
+              <div className="overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#FF9500]/5 to-transparent p-1">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-black">
+                  {testimonialImages.map((image, index) => (
+                    <div
+                      key={image.src}
+                      className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                        index === currentTestimonial ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover object-top"
+                        priority={index === 0}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-              {/* Progress indicators */}
-              <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
-                {testimonialImages.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                      index === currentTestimonial
-                        ? "w-6 bg-[#FF9500]"
-                        : "bg-white/30"
-                    }`}
-                  />
-                ))}
+              
+              {/* Second card (desktop only - shows next image) */}
+              <div className="hidden overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#FF9500]/5 to-transparent p-1 md:block">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-black">
+                  {testimonialImages.map((image, index) => (
+                    <div
+                      key={image.src}
+                      className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                        index === (currentTestimonial + 1) % testimonialImages.length ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+            
+            {/* Progress indicators - below the images */}
+            <div className="mt-4 flex gap-2">
+              {testimonialImages.map((_, index) => (
+                <div
+                  key={index}
+                  className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                    index === currentTestimonial
+                      ? "w-6 bg-[#FF9500]"
+                      : "bg-white/30"
+                  }`}
+                />
+              ))}
+            </div>
+          </motion.div>
 
           {/* Bottom accent */}
           <motion.div
