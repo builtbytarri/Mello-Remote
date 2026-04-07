@@ -611,7 +611,8 @@ export default function Home() {
                         alt={image.alt}
                         fill
                         className="object-cover object-top"
-                        priority={index === 0}
+                        priority
+                        loading="eager"
                       />
                     </div>
                   ))}
@@ -633,6 +634,8 @@ export default function Home() {
                         alt={image.alt}
                         fill
                         className="object-cover object-top"
+                        priority
+                        loading="eager"
                       />
                     </div>
                   ))}
