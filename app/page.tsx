@@ -181,7 +181,7 @@ export default function Home() {
            
             <div className="flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-3">
               <a
-                href="https://chat.whatsapp.com/LA0mWFKjWhC2VHIBebAAJZ?mode=hq2tcli"
+                href="https://chat.whatsapp.com/EX0dkts2pC18A7RLoekIl9?mode=gi_t"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-[#FF9500] px-4 py-2 text-sm font-semibold text-black transition-all hover:bg-[#FFB340]"
@@ -189,7 +189,7 @@ export default function Home() {
                 Join WhatsApp Group
               </a>
               <a
-                href="https://t.me/MelloAcademy"
+                href="https://t.me/+3y7PddZ4i-AxNDg0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full border border-[#FF9500] px-4 py-2 text-sm font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500]/10"
