@@ -8,7 +8,25 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [testimonialDelay, setTestimonialDelay] = useState(1500);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState({ name: "", price: "", link: "" });
+  const [copied, setCopied] = useState(false);
   const format2 = (n: number) => n.toString().padStart(2, "0");
+
+  const accountNumber = "7064423845";
+  const accountName = "Olanrewaju Oluwaseyi Tunde";
+  const bankName = "Opay";
+
+  const copyAccountNumber = () => {
+    navigator.clipboard.writeText(accountNumber);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const openPaymentModal = (name: string, price: string, link: string) => {
+    setSelectedPackage({ name, price, link });
+    setShowPaymentModal(true);
+  };
   
   const testimonialImages = [
     { src: "/success1.png", alt: "Success Story 1" },
@@ -17,6 +35,7 @@ export default function Home() {
     { src: "/success4.jpg", alt: "Success Story 4" },
     { src: "/success5.jpg", alt: "Success Story 5" },
     { src: "/success6.jpg", alt: "Success Story 6" },
+    { src: "/success7.jpg", alt: "Success Story 7" },
   ];
   const getNextTargetDate = () => {
     const now = new Date();
@@ -429,11 +448,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <a href="https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N25,000%20Starter%20Pack%20for%20MELLOREMOTE%20VIP">
-                <button className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black">
-                  Get Started
-                </button>
-              </a>
+              <button 
+                onClick={() => openPaymentModal("The Remote Starter Pack", "₦25,000", "https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N25,000%20Starter%20Pack%20for%20MELLOREMOTE%20VIP")}
+                className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black"
+              >
+                Get Started
+              </button>
             </motion.div>
 
             {/* Job Hacker - Featured */}
@@ -495,11 +515,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <a href="https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N50,000%20Job%20Hacker%20Package%20for%20MELLOREMOTE%20VIP">
-                <button className="mt-auto w-full rounded-lg bg-[#FF9500] py-3 font-semibold text-black transition-all hover:bg-[#FFB340]">
-                  Get Started
-                </button>
-              </a>
+              <button 
+                onClick={() => openPaymentModal("The Remote Job Hacker", "₦50,000", "https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N50,000%20Job%20Hacker%20Package%20for%20MELLOREMOTE%20VIP")}
+                className="mt-auto w-full rounded-lg bg-[#FF9500] py-3 font-semibold text-black transition-all hover:bg-[#FFB340]"
+              >
+                Get Started
+              </button>
             </motion.div>
 
             {/* Goldmine VIP */}
@@ -561,11 +582,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <a href="https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N100,000%20Goldmine%20VIP%20Package%20for%20MELLOREMOTE%20VIP">
-                <button className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black">
-                  Get Started
-                </button>
-              </a>
+              <button 
+                onClick={() => openPaymentModal("Remote Goldmine VIP Inner Circle", "₦100,000", "https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20N100,000%20Goldmine%20VIP%20Package%20for%20MELLOREMOTE%20VIP")}
+                className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black"
+              >
+                Get Started
+              </button>
             </motion.div>
           </div>
         </div>
@@ -1081,6 +1103,123 @@ export default function Home() {
       </section>
 
      
+      {/* Payment Modal */}
+      {showPaymentModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="relative w-full max-w-md overflow-hidden rounded-2xl border border-[#FF9500]/30 bg-gradient-to-b from-[#1a1a1a] to-black p-6 shadow-2xl"
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setShowPaymentModal(false)}
+              className="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
+            >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <h3 className="mb-2 text-center text-xl font-bold text-white">
+              Complete Your Payment
+            </h3>
+            <p className="mb-6 text-center text-sm text-gray-400">
+              {selectedPackage.name} - {selectedPackage.price}
+            </p>
+
+            {/* Barcode */}
+            <div className="mb-6 flex justify-center">
+              <div className="rounded-xl bg-white p-4">
+                <Image
+                  src="/bar.png"
+                  alt="Payment Barcode"
+                  width={200}
+                  height={200}
+                  className="h-auto w-full max-w-[200px]"
+                />
+              </div>
+            </div>
+
+            {/* Account Details */}
+            <div className="mb-6 rounded-xl border border-[#FF9500]/20 bg-[#FF9500]/5 p-4">
+              <p className="mb-1 text-sm text-gray-400">Bank Transfer Details</p>
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-lg font-bold text-white">{accountNumber}</p>
+                  <p className="text-sm text-gray-300">{accountName}</p>
+                  <p className="text-xs text-[#FF9500]">{bankName}</p>
+                </div>
+                <button
+                  onClick={copyAccountNumber}
+                  className="flex items-center gap-1 rounded-lg bg-[#FF9500] px-3 py-2 text-sm font-semibold text-black transition-colors hover:bg-[#FFB340]"
+                >
+                  {copied ? (
+                    <>
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                      Copy
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Instructions */}
+            <p className="mb-4 text-center text-sm text-gray-400">
+              After making payment, send screenshot to any of these WhatsApp numbers:
+            </p>
+
+            {/* WhatsApp Buttons */}
+            <div className="flex flex-col gap-3">
+              <a
+                href={`https://wa.me/2348144181226?text=Goodday%20I%20have%20made%20payment%20for%20${encodeURIComponent(selectedPackage.name)}%20${encodeURIComponent(selectedPackage.price)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 rounded-lg border border-green-500 bg-transparent py-3 font-semibold text-green-500 transition-all hover:bg-green-500 hover:text-black"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.607.951.965-3.515-.228-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Send Receipt to Joy
+              </a>
+              <a
+                href={`https://wa.me/2349133853646?text=Goodday%20I%20have%20made%20payment%20for%20${encodeURIComponent(selectedPackage.name)}%20${encodeURIComponent(selectedPackage.price)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 rounded-lg border border-[#FF9500] bg-transparent py-3 font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.607.951.965-3.515-.228-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Send Receipt to Dresh
+              </a>
+            </div>
+
+            {/* Alternative: Chat on WhatsApp directly */}
+            <div className="mt-4 border-t border-gray-800 pt-4">
+              <p className="mb-2 text-center text-xs text-gray-500">Or chat on WhatsApp to discuss payment</p>
+              <a
+                href={selectedPackage.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-center text-sm text-[#FF9500] underline transition-colors hover:text-[#FFB340]"
+              >
+                Chat on WhatsApp about {selectedPackage.name}
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }
