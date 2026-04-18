@@ -1010,7 +1010,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="relative w-full max-w-md overflow-hidden rounded-2xl border border-[#FF9500]/30 bg-gradient-to-b from-[#1a1a1a] to-black p-6 shadow-2xl"
+            className="relative w-full max-w-md max-h-[90vh] overflow-y-auto overflow-x-hidden rounded-2xl border border-[#FF9500]/30 bg-gradient-to-b from-[#1a1a1a] to-black p-4 md:p-6 shadow-2xl"
           >
             {/* Close button */}
             <button
@@ -1025,35 +1025,35 @@ export default function Home() {
             <h3 className="mb-2 text-center text-xl font-bold text-white">
               Complete Your Payment
             </h3>
-            <p className="mb-6 text-center text-sm text-gray-400">
+            <p className="mb-4 md:mb-6 text-center text-sm text-gray-400">
               {selectedPackage.name} - {selectedPackage.price}
             </p>
 
             {/* Barcode */}
-            <div className="mb-6 flex justify-center">
-              <div className="rounded-xl bg-white p-4">
+            <div className="mb-4 md:mb-6 flex justify-center">
+              <div className="rounded-xl bg-white p-3 md:p-4">
                 <Image
                   src="/bar.png"
                   alt="Payment Barcode"
                   width={200}
                   height={200}
-                  className="h-auto w-full max-w-[200px]"
+                  className="h-auto w-full max-w-[160px] md:max-w-[200px]"
                 />
               </div>
             </div>
 
             {/* Account Details */}
-            <div className="mb-6 rounded-xl border border-[#FF9500]/20 bg-[#FF9500]/5 p-4">
-              <p className="mb-1 text-sm text-gray-400">Bank Transfer Details</p>
-              <div className="flex items-center justify-between gap-4">
+            <div className="mb-4 md:mb-6 rounded-xl border border-[#FF9500]/20 bg-[#FF9500]/5 p-3 md:p-4">
+              <p className="mb-1 text-xs md:text-sm text-gray-400">Bank Transfer Details</p>
+              <div className="flex items-center justify-between gap-2 md:gap-4">
                 <div>
-                  <p className="text-lg font-bold text-white">{accountNumber}</p>
-                  <p className="text-sm text-gray-300">{accountName}</p>
-                  <p className="text-xs text-[#FF9500]">{bankName}</p>
+                  <p className="text-base md:text-lg font-bold text-white">{accountNumber}</p>
+                  <p className="text-xs md:text-sm text-gray-300">{accountName}</p>
+                  <p className="text-[10px] md:text-xs text-[#FF9500]">{bankName}</p>
                 </div>
                 <button
                   onClick={copyAccountNumber}
-                  className="flex items-center gap-1 rounded-lg bg-[#FF9500] px-3 py-2 text-sm font-semibold text-black transition-colors hover:bg-[#FFB340]"
+                  className="flex items-center gap-1 rounded-lg bg-[#FF9500] px-3 py-2 text-xs md:text-sm font-semibold text-black transition-colors hover:bg-[#FFB340]"
                 >
                   {copied ? (
                     <>
@@ -1075,7 +1075,7 @@ export default function Home() {
             </div>
 
             {/* Instructions */}
-            <p className="mb-4 text-center text-sm text-gray-400">
+            <p className="mb-3 md:mb-4 text-center text-xs md:text-sm text-gray-400">
               After making payment, send screenshot to any of these WhatsApp numbers:
             </p>
 
