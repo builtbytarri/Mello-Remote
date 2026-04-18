@@ -13,8 +13,8 @@ export default function Home() {
   const [copied, setCopied] = useState(false);
   const format2 = (n: number) => n.toString().padStart(2, "0");
 
-  const accountNumber = "7064423845";
-  const accountName = "Olanrewaju Oluwaseyi Tunde";
+  const accountNumber = "6486274161";
+  const accountName = "Daniel Moses";
   const bankName = "Opay";
 
   const copyAccountNumber = () => {
@@ -37,6 +37,52 @@ export default function Home() {
     { src: "/success6.jpg", alt: "Success Story 6" },
     { src: "/success7.jpg", alt: "Success Story 7" },
   ];
+
+  const writtenTestimonials = [
+    {
+      text: "Within 2 weeks of joining MelloRemote, I landed my first remote customer support role. The training was practical and the support was incredible!",
+      initials: "AN",
+      name: "Amara Nwosu",
+      role: "Customer Support Agent",
+      stars: 5,
+    },
+    {
+      text: "I went from earning ₦80,000 monthly to $1,200 in my first month as a virtual assistant. MelloRemote changed my entire financial situation.",
+      initials: "DO",
+      name: "David Okafor",
+      role: "Virtual Assistant",
+      stars: 5,
+    },
+    {
+      text: "The platform is great but took me a bit longer than expected to land my first client. Still worth it though!",
+      initials: "CA",
+      name: "Chioma Adewale",
+      role: "Social Media Manager",
+      stars: 4,
+    },
+    {
+      text: "Best investment I've made this year! Got hired as a content writer for a US company. Now I work from home earning 4x my old salary.",
+      initials: "EI",
+      name: "Emmanuel Ike",
+      role: "Content Writer",
+      stars: 5,
+    },
+    {
+      text: "MelloRemote gave me the skills and confidence to apply for international roles. Now working remotely for a Canadian tech startup!",
+      initials: "FO",
+      name: "Fatima Olatunji",
+      role: "Data Entry Specialist",
+      stars: 5,
+    },
+    {
+      text: "Finally quit my 9-5! The community support and resources helped me transition to full-time freelancing. Making more and working less.",
+      initials: "TM",
+      name: "Tunde Musa",
+      role: "Freelance Designer",
+      stars: 4,
+    }
+  ];
+
   const getNextTargetDate = () => {
     const now = new Date();
     const target = new Date(now);
@@ -704,6 +750,77 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section (Auto-sliding) */}
+      <section className="relative z-10 overflow-hidden bg-gradient-to-b from-black via-[#0a0a0a] to-black py-16 md:py-20">
+        <div className="mx-auto w-full max-w-full">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-12 text-center px-4"
+          >
+            <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+              Hear From Our <span className="text-[#FF9500]">Success Stories</span>
+            </h2>
+            <p className="mt-4 text-base text-gray-400 md:text-lg">
+              Real people, real transformations, real results
+            </p>
+          </motion.div>
+
+          {/* Auto-sliding Testimonials Container */}
+          <div className="relative flex w-full overflow-hidden">
+            {/* Gradient Mask for fading edges */}
+            <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-12 bg-gradient-to-r from-black to-transparent md:w-32"></div>
+            <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-12 bg-gradient-to-l from-black to-transparent md:w-32"></div>
+            
+            <motion.div
+              className="flex w-max gap-4 px-4 md:gap-6 lg:gap-8"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
+            >
+              {[...writtenTestimonials, ...writtenTestimonials].map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="w-[300px] shrink-0 md:w-[350px] lg:w-[400px] group relative overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#0a0a0a] to-black p-6 transition-all hover:border-[#FF9500]/40 hover:shadow-lg hover:shadow-[#FF9500]/10"
+                >
+                  {/* Stars */}
+                  <div className="mb-4 flex gap-1">
+                    {[...Array(testimonial.stars)].map((_, i) => (
+                      <svg key={`star-full-${i}`} className="h-5 w-5 fill-[#FF9500]" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                    {[...Array(5 - testimonial.stars)].map((_, i) => (
+                      <svg key={`star-empty-${i}`} className="h-5 w-5 fill-gray-600" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  
+                  {/* Testimonial Text */}
+                  <p className="mb-6 text-sm leading-relaxed text-gray-300 md:text-base">
+                    "{testimonial.text}"
+                  </p>
+
+                  {/* Profile */}
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#FF9500] to-[#E68600] text-base font-bold text-black md:h-12 md:w-12 md:text-lg">
+                      {testimonial.initials}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">{testimonial.name}</p>
+                      <p className="text-xs text-gray-500 md:text-sm">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Explanation Section */}
       <section className="relative z-10 bg-gradient-to-b from-black via-[#0a0a0a] to-black px-6 py-16 md:px-12 lg:px-20">
         <div className="mx-auto max-w-5xl space-y-12">
@@ -883,224 +1000,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="relative z-10 bg-gradient-to-b from-black via-[#0a0a0a] to-black px-6 py-20 md:px-12 lg:px-20">
-        <div className="mx-auto max-w-7xl">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="mb-16 text-center"
-          >
-            <h2 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-              Hear From Our <span className="text-[#FF9500]">Success Stories</span>
-            </h2>
-            <p className="mt-4 text-lg text-gray-400 md:text-xl">
-              Real people, real transformations, real results
-            </p>
-          </motion.div>
 
-          {/* Testimonials Grid */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {/* Testimonial 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#0a0a0a] to-black p-6 transition-all hover:border-[#FF9500]/40 hover:shadow-lg hover:shadow-[#FF9500]/10"
-            >
-              {/* Stars */}
-              <div className="mb-4 flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 fill-[#FF9500]" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              
-              {/* Testimonial Text */}
-              <p className="mb-6 text-base leading-relaxed text-gray-300">
-                "Within 2 weeks of joining MelloRemote, I landed my first remote customer support role. The training was practical and the support was incredible!"
-              </p>
-
-              {/* Profile */}
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#FF9500] to-[#E68600] text-lg font-bold text-black">
-                  AN
-                </div>
-                <div>
-                  <p className="font-semibold text-white">Amara Nwosu</p>
-                  <p className="text-sm text-gray-500">Customer Support Agent</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Testimonial 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="group relative overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#0a0a0a] to-black p-6 transition-all hover:border-[#FF9500]/40 hover:shadow-lg hover:shadow-[#FF9500]/10"
-            >
-              <div className="mb-4 flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 fill-[#FF9500]" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              
-              <p className="mb-6 text-base leading-relaxed text-gray-300">
-                "I went from earning ₦80,000 monthly to $1,200 in my first month as a virtual assistant. MelloRemote changed my entire financial situation."
-              </p>
-
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#FF9500] to-[#E68600] text-lg font-bold text-black">
-                  DO
-                </div>
-                <div>
-                  <p className="font-semibold text-white">David Okafor</p>
-                  <p className="text-sm text-gray-500">Virtual Assistant</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Testimonial 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="group relative overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#0a0a0a] to-black p-6 transition-all hover:border-[#FF9500]/40 hover:shadow-lg hover:shadow-[#FF9500]/10"
-            >
-              <div className="mb-4 flex gap-1">
-                {[...Array(4)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 fill-[#FF9500]" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-                <svg className="h-5 w-5 fill-gray-600" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              </div>
-              
-              <p className="mb-6 text-base leading-relaxed text-gray-300">
-                "The platform is great but took me a bit longer than expected to land my first client. Still worth it though!"
-              </p>
-
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#FF9500] to-[#E68600] text-lg font-bold text-black">
-                  CA
-                </div>
-                <div>
-                  <p className="font-semibold text-white">Chioma Adewale</p>
-                  <p className="text-sm text-gray-500">Social Media Manager</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Testimonial 4 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#0a0a0a] to-black p-6 transition-all hover:border-[#FF9500]/40 hover:shadow-lg hover:shadow-[#FF9500]/10"
-            >
-              <div className="mb-4 flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 fill-[#FF9500]" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              
-              <p className="mb-6 text-base leading-relaxed text-gray-300">
-                "Best investment I've made this year! Got hired as a content writer for a US company. Now I work from home earning 4x my old salary."
-              </p>
-
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#FF9500] to-[#E68600] text-lg font-bold text-black">
-                  EI
-                </div>
-                <div>
-                  <p className="font-semibold text-white">Emmanuel Ike</p>
-                  <p className="text-sm text-gray-500">Content Writer</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Testimonial 5 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="group relative overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#0a0a0a] to-black p-6 transition-all hover:border-[#FF9500]/40 hover:shadow-lg hover:shadow-[#FF9500]/10"
-            >
-              <div className="mb-4 flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 fill-[#FF9500]" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              
-              <p className="mb-6 text-base leading-relaxed text-gray-300">
-                "MelloRemote gave me the skills and confidence to apply for international roles. Now working remotely for a Canadian tech startup!"
-              </p>
-
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#FF9500] to-[#E68600] text-lg font-bold text-black">
-                  FO
-                </div>
-                <div>
-                  <p className="font-semibold text-white">Fatima Olatunji</p>
-                  <p className="text-sm text-gray-500">Data Entry Specialist</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Testimonial 6 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="group relative overflow-hidden rounded-2xl border border-[#FF9500]/20 bg-gradient-to-br from-[#0a0a0a] to-black p-6 transition-all hover:border-[#FF9500]/40 hover:shadow-lg hover:shadow-[#FF9500]/10"
-            >
-              <div className="mb-4 flex gap-1">
-                {[...Array(4)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 fill-[#FF9500]" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-                <svg className="h-5 w-5 fill-gray-600" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              </div>
-              
-              <p className="mb-6 text-base leading-relaxed text-gray-300">
-                "Finally quit my 9-5! The community support and resources helped me transition to full-time freelancing. Making more and working less."
-              </p>
-
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#FF9500] to-[#E68600] text-lg font-bold text-black">
-                  TM
-                </div>
-                <div>
-                  <p className="font-semibold text-white">Tunde Musa</p>
-                  <p className="text-sm text-gray-500">Freelance Designer</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
      
       {/* Payment Modal */}
@@ -1179,18 +1079,34 @@ export default function Home() {
               After making payment, send screenshot to any of these WhatsApp numbers:
             </p>
 
-            {/* WhatsApp Button */}
-            <a
-              href={`https://wa.me/2349133853646?text=Goodday%20I%20have%20made%20payment%20for%20${encodeURIComponent(selectedPackage.name)}%20${encodeURIComponent(selectedPackage.price)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#FF9500] py-3 font-semibold text-black transition-all hover:bg-[#FFB340]"
-            >
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.607.951.965-3.515-.228-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-              Send Receipt to Dresh
-            </a>
+             {/* WhatsApp Buttons */}
+            <div className="flex flex-col gap-3">
+              <a
+                href={`https://wa.me/2348144181226?text=Goodday%20I%20have%20made%20payment%20for%20${encodeURIComponent(selectedPackage.name)}%20${encodeURIComponent(selectedPackage.price)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 rounded-lg border border-green-500 bg-transparent py-3 font-semibold text-green-500 transition-all hover:bg-green-500 hover:text-black"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.607.951.965-3.515-.228-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Send Receipt to Joy
+              </a>
+              <p className="text-center">
+                OR
+              </p>
+              <a
+                href={`https://wa.me/2349133853646?text=Goodday%20I%20have%20made%20payment%20for%20${encodeURIComponent(selectedPackage.name)}%20${encodeURIComponent(selectedPackage.price)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 rounded-lg border border-[#FF9500] bg-transparent py-3 font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.607.951.965-3.515-.228-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Send Receipt to Dresh
+              </a>
+            </div>
 
             {/* Alternative: Chat on WhatsApp directly */}
             <div className="mt-4 border-t border-gray-800 pt-4">
