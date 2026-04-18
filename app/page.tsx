@@ -778,7 +778,7 @@ export default function Home() {
             <motion.div
               className="flex w-max gap-4 px-4 md:gap-6 lg:gap-8"
               animate={{ x: ["0%", "-50%"] }}
-              transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
+              transition={{ repeat: Infinity, ease: "linear", duration: 80 }}
             >
               {[...writtenTestimonials, ...writtenTestimonials].map((testimonial, index) => (
                 <div
