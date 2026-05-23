@@ -36,6 +36,7 @@ export default function Home() {
     { src: "/success5.jpg", alt: "Success Story 5" },
     { src: "/success6.jpg", alt: "Success Story 6" },
     { src: "/success7.jpg", alt: "Success Story 7" },
+    { src: "/success8.png", alt: "Success Story 8" },
   ];
 
   const writtenTestimonials = [
