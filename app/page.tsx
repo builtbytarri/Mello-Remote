@@ -37,6 +37,8 @@ export default function Home() {
     { src: "/success6.jpg", alt: "Success Story 6" },
     { src: "/success7.jpg", alt: "Success Story 7" },
     { src: "/success8.png", alt: "Success Story 8" },
+    { src: "/success9.png", alt: "Success Story 9" },
+    { src: "/success10.png", alt: "Success Story 10" },
   ];
 
   const writtenTestimonials = [
@@ -84,17 +86,19 @@ export default function Home() {
     }
   ];
 
+  // Live sessions run every 2 days at 9pm; first upcoming one is Sunday 11 Oct 2026.
   const getNextTargetDate = () => {
     const now = new Date();
-    const target = new Date(now);
-    target.setDate(target.getDate() + 5);
-    target.setHours(0, 0, 0, 0);
+    const target = new Date(2026, 9, 11, 21, 0, 0, 0);
+    while (target.getTime() <= now.getTime()) {
+      target.setDate(target.getDate() + 2);
+    }
     return target;
   };
   useEffect(() => {
-    const target = getNextTargetDate();
     const tick = () => {
       const now = new Date();
+      const target = getNextTargetDate();
       let ms = target.getTime() - now.getTime();
       if (ms < 0) ms = 0;
       const days = Math.floor(ms / 86400000);
@@ -271,12 +275,12 @@ export default function Home() {
            
             <div className="flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-3">
               <a
-                href="https://chat.whatsapp.com/EX0dkts2pC18A7RLoekIl9?mode=gi_t"
+                href="https://calendar.app.google/cXCunKiNFnR8tkWa7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-[#FF9500] px-4 py-2 text-sm font-semibold text-black transition-all hover:bg-[#FFB340]"
               >
-                Join WhatsApp Group
+                Join Live Session
               </a>
               <a
                 href="https://t.me/+3y7PddZ4i-AxNDg0"
@@ -421,212 +425,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="relative z-10 bg-gradient-to-b from-black via-[#0a0a0a] to-black px-6 py-12 md:px-8 lg:px-12">
-        <div className="mx-auto max-w-7xl">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="mb-6 text-center"
-          >
-            <h2 className="mb-1 text-2xl font-bold text-white md:text-3xl">
-              MELLOREMOTE VIP
-            </h2>
-            <p className="text-sm text-gray-400">
-              Packages and Bundles
-            </p>
-          </motion.div>
-
-          {/* Pricing Cards */}
-          <div className="grid gap-4 md:grid-cols-3">
-            {/* Free Plan */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="relative flex flex-col overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-b from-[#1a1a1a] to-black p-6 transition-all hover:border-[#FF9500]/50"
-            >
-              <div className="absolute right-4 top-4 rounded-full bg-green-500 px-2 py-0.5 text-xs font-bold text-black">
-                FREE
-              </div>
-
-              <div className="mb-6 text-center">
-                <div className="mb-3 flex justify-center">
-                  <svg className="h-12 w-12 text-[#FF9500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="mb-2 text-xl font-bold text-white">Free</h3>
-                <p className="mb-4 text-xs text-gray-400">Duration: 2 Months</p>
-                <div className="mb-1">
-                  <span className="text-4xl font-bold text-[#FF9500]">₦0</span>
-                </div>
-                <p className="text-xs text-gray-500">No Cost, Get Started Today</p>
-              </div>
-
-              <div className="mb-6 space-y-3">
-                <div className="flex items-start gap-3">
-                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-gray-300">10% Mentorship on In-Demand Remote Skills</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-gray-300">4 Job Recommendations</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-gray-400 italic">Terms Apply (Strict)</span>
-                </div>
-              </div>
-
-              <a
-                href="https://t.me/+qSFi46GPWvJiY2Zk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 text-center font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black"
-              >
-                Join Free Group
-              </a>
-            </motion.div>
-
-            {/* Prime Plan - Featured */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative flex flex-col overflow-hidden rounded-2xl border-2 border-[#FF9500] bg-gradient-to-b from-[#FF9500]/10 to-black p-6 shadow-2xl shadow-[#FF9500]/20"
-            >
-              <div className="absolute right-4 top-4 rounded-full bg-[#FF9500] px-2 py-0.5 text-xs font-bold text-black">
-                POPULAR
-              </div>
-
-              <div className="mb-6 text-center">
-                <div className="mb-3 flex justify-center">
-                  <svg className="h-12 w-12 text-[#FF9500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="mb-2 text-xl font-bold text-white">Prime</h3>
-                <p className="mb-4 text-xs text-gray-400">Duration: 4 Months</p>
-                <div className="mb-1 flex items-baseline justify-center gap-2">
-                  <span className="text-lg text-gray-500 line-through">₦120,000</span>
-                  <span className="text-4xl font-bold text-[#FF9500]">₦100,000</span>
-                </div>
-                <p className="text-xs text-gray-500">Most Popular Choice</p>
-              </div>
-
-              <div className="mb-6 space-y-3">
-                <div className="flex items-start gap-3">
-                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-gray-300">Full Course on How to Secure Your First/Next Remote Job in Less Than 1 Month</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-gray-300">4 Public Remote Trainers</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-gray-300">4 Months Job Recommendation (Salary: $300 – $1,000 + Bonuses)</span>
-                </div>
-              </div>
-
-              <button
-                onClick={() => openPaymentModal("Prime Pack", "₦100,000", "https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20Prime%20Pack%20(N100%2C000)%20for%20MELLOREMOTE%20VIP")}
-                className="mt-auto w-full rounded-lg bg-[#FF9500] py-3 font-semibold text-black transition-all hover:bg-[#FFB340]"
-              >
-                Get Started
-              </button>
-            </motion.div>
-
-            {/* Apex Plan */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="relative flex flex-col overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-b from-[#1a1a1a] to-black p-6 transition-all hover:border-[#FF9500]/50"
-            >
-              <div className="absolute right-4 top-4 rounded-full bg-purple-500 px-2 py-0.5 text-xs font-bold text-white">
-                PREMIUM
-              </div>
-
-              <div className="mb-6 text-center">
-                <div className="mb-3 flex justify-center">
-                  <svg className="h-12 w-12 text-[#FF9500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                  </svg>
-                </div>
-                <h3 className="mb-2 text-xl font-bold text-white">Apex</h3>
-                <p className="mb-4 text-xs text-gray-400">Duration: 4 Months</p>
-                <div className="mb-1 flex items-baseline justify-center gap-2">
-                  <span className="text-lg text-gray-500 line-through">₦350,000</span>
-                  <span className="text-4xl font-bold text-[#FF9500]">₦300,000</span>
-                </div>
-                <p className="text-xs text-gray-500">Ultimate VIP Access</p>
-              </div>
-
-              <div className="mb-6 space-y-3">
-                <div className="flex items-start gap-3">
-                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-gray-300">Everything in the Prime Pack</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-gray-300">2 Private Mentors</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-gray-300">Physical Classes</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-gray-300">Proximity to Remote Workers Network</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-gray-300">4 Months Job Recommendation (Salary: $500 – $2,500)</span>
-                </div>
-              </div>
-
-              <button
-                onClick={() => openPaymentModal("Apex Pack", "₦300,000", "https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20Apex%20Pack%20(N300%2C000)%20for%20MELLOREMOTE%20VIP")}
-                className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black"
-              >
-                Get Started
-              </button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Success Stories Visual Section */}
+      
+ {/* Success Stories Visual Section */}
       <section className="relative z-10 overflow-hidden bg-black py-8 md:py-16">
         {/* Gradient overlays for blending */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-60" />
@@ -737,7 +537,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section (Auto-sliding) */}
+  {/* Testimonials Section (Auto-sliding) */}
       <section className="relative z-10 overflow-hidden bg-gradient-to-b from-black via-[#0a0a0a] to-black py-16 md:py-20">
         <div className="mx-auto w-full max-w-full">
           {/* Section Header */}
@@ -807,6 +607,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+    
+
+     
+
+    
 
       {/* Explanation Section */}
       <section className="relative z-10 bg-gradient-to-b from-black via-[#0a0a0a] to-black px-6 py-16 md:px-12 lg:px-20">
@@ -987,7 +793,288 @@ export default function Home() {
         </div>
       </section>
 
+  {/* Pricing Section */}
+      <section className="relative z-10 bg-gradient-to-b from-black via-[#0a0a0a] to-black px-6 py-12 md:px-8 lg:px-12">
+        <div className="mx-auto max-w-7xl">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-6 text-center"
+          >
+            <h2 className="mb-1 text-2xl font-bold text-white md:text-3xl">
+              MELLOREMOTE VIP
+            </h2>
+            <p className="text-sm text-gray-400">
+              Packages and Bundles
+            </p>
+          </motion.div>
 
+          {/* Pricing Cards */}
+          <div className="grid gap-4 md:grid-cols-3">
+            {/* Free Plan */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="relative flex flex-col overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-b from-[#1a1a1a] to-black p-6 transition-all hover:border-[#FF9500]/50"
+            >
+              <div className="absolute right-4 top-4 rounded-full bg-green-500 px-2 py-0.5 text-xs font-bold text-black">
+                BASIC
+              </div>
+
+              <div className="mb-6 text-center">
+                <div className="mb-3 flex justify-center">
+                  <svg className="h-12 w-12 text-[#FF9500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="mb-2 text-xl font-bold text-white">Starter</h3>
+                <p className="mb-4 text-xs text-gray-400">DIRECT ENTRY</p>
+                <div className="mb-1">
+                  <span className="text-4xl font-bold text-[#FF9500]">₦50,000</span>
+                </div>
+                <p className="text-xs text-gray-500">No Cost, Get Started Today</p>
+              </div>
+
+              <div className="mb-6 space-y-3">
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">Full Remote Skill Mentorship</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">⁠2 Public Mentors</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">⁠Jobs involved (Customer Support & Chat Support)</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">Job Recommendation Duration: 1 Month</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">⁠Salary 300$ - 600$</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-400 italic">Tax/Remission 45% for 10months</span>
+                </div>
+              </div>
+
+ {/* <button
+                onClick={() => openPaymentModal("Starter Pack", "₦50,000", "https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20Starter%20Pack%20(N50%2C000)%20for%20MELLOREMOTE%20VIP")}
+                className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black"
+              >
+                Get Started
+              </button> */}
+              <a
+                href="https://checkout.bachs.io/pay/pl_53598be33dac"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 text-center font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black"
+              >
+                Get Started
+              </a>
+              {/* <a
+                href="https://t.me/+qSFi46GPWvJiY2Zk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 text-center font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black"
+              >
+                Join Free Group
+              </a> */}
+            </motion.div>
+
+            {/* Prime Plan - Featured */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative flex flex-col overflow-hidden rounded-2xl border-2 border-[#FF9500] bg-gradient-to-b from-[#FF9500]/10 to-black p-6 shadow-2xl shadow-[#FF9500]/20"
+            >
+              <div className="absolute right-4 top-4 rounded-full bg-[#FF9500] px-2 py-0.5 text-xs font-bold text-black">
+                POPULAR
+              </div>
+
+              <div className="mb-6 text-center">
+                <div className="mb-3 flex justify-center">
+                  <svg className="h-12 w-12 text-[#FF9500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="mb-2 text-xl font-bold text-white">Prime</h3>
+                <p className="mb-4 text-xs text-gray-400">DIRECT ENTRY</p>
+                <div className="mb-1 flex items-baseline justify-center gap-2">
+                  <span className="text-lg text-gray-500 line-through">₦120,000</span>
+                  <span className="text-4xl font-bold text-[#FF9500]">₦100,000</span>
+                </div>
+                <p className="text-xs text-gray-500">Most Popular Choice</p>
+              </div>
+
+              <div className="mb-6 space-y-3">
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">Everything in Starter Pack</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">4 Public Remote Trainers</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">Jobs: Customer Support, Chat Support, Virtual Assistant, AI Training & Evaluation, Software Engineering, Expert & Specialist Roles, Creative & Media, Architecture & Design</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">Job Recommendation Duration: 2 Months</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">Salary: $300 - $2,500</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-400 italic">Tax/Remission 35% for 7 months</span>
+                </div>
+              </div>
+
+              {/* <button
+                onClick={() => openPaymentModal("Prime Pack", "₦100,000", "https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20Prime%20Pack%20(N100%2C000)%20for%20MELLOREMOTE%20VIP")}
+                className="mt-auto w-full rounded-lg bg-[#FF9500] py-3 font-semibold text-black transition-all hover:bg-[#FFB340]"
+              >
+                Get Started
+              </button> */}
+              <a
+                href="https://checkout.bachs.io/pay/pl_7b538e804e45"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto w-full rounded-lg bg-[#FF9500] py-3 text-center font-semibold text-black transition-all hover:bg-[#FFB340]"
+              >
+                Get Started
+              </a>
+            </motion.div>
+
+            {/* Apex Plan */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="relative flex flex-col overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-b from-[#1a1a1a] to-black p-6 transition-all hover:border-[#FF9500]/50"
+            >
+              <div className="absolute right-4 top-4 rounded-full bg-purple-500 px-2 py-0.5 text-xs font-bold text-white">
+                PREMIUM
+              </div>
+
+              <div className="mb-6 text-center">
+                <div className="mb-3 flex justify-center">
+                  <svg className="h-12 w-12 text-[#FF9500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                </div>
+                <h3 className="mb-2 text-xl font-bold text-white">Apex</h3>
+                <p className="mb-4 text-xs text-gray-400">DIRECT ENTRY</p>
+                <div className="mb-1 flex items-baseline justify-center gap-2">
+                  <span className="text-lg text-gray-500 line-through">₦350,000</span>
+                  <span className="text-4xl font-bold text-[#FF9500]">₦300,000</span>
+                </div>
+                <p className="text-xs text-gray-500">Ultimate VIP Access</p>
+              </div>
+
+              <div className="mb-6 space-y-3">
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">Everything in Prime Pack</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">1 Private Mentor</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">Physical + Online Classes</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">Proximity to Remote Workers Network</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">Job Recommendation Duration: 4 Months</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-300">Salary: $300 - $5,000</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-gray-400 italic">Tax/Remission 20% for 4 months</span>
+                </div>
+              </div>
+
+              {/* <button
+                onClick={() => openPaymentModal("Apex Pack", "₦300,000", "https://wa.me/2349133853646?text=Goodday%20DreshMello%20I%20am%20interested%20in%20Paying%20for%20the%20Apex%20Pack%20(N300%2C000)%20for%20MELLOREMOTE%20VIP")}
+                className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black"
+              >
+                Get Started
+              </button> */}
+              <a
+                href="https://checkout.bachs.io/pay/pl_f4339a1e5884"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto w-full rounded-lg border border-[#FF9500] bg-transparent py-3 text-center font-semibold text-[#FF9500] transition-all hover:bg-[#FF9500] hover:text-black"
+              >
+                Get Started
+              </a>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
      
       {/* Payment Modal */}
